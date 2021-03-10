@@ -4,6 +4,7 @@
         <div class="card-header text-center ">
             <h3>Ludoteca</h3>
             <a href="{{route('ludotecas.create')}}" class="btn btn-primary">Agregar Datos a Ludoteca</a>
+            <a href="{{route('export.ludotecas')}}" class="btn btn-success">Exportar a Excel</a>
         </div>
         <div class="card-body">
           <table class="table table-hover table-sttriped table-bordered" id="myTable">

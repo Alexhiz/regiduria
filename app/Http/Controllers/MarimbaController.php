@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Exports\MarimbasExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Marimba;
 use App\Models\Condition;
 use App\Models\Ubication;
@@ -70,5 +71,10 @@ class MarimbaController extends Controller
         $marimba->delete();
 
         return redirect()->route('marimbas.index');
+    }
+
+    public function exportExcelMarimba() 
+    {
+        return Excel::download(new MarimbasExport, 'marimbas.xlsx');
     }
 }

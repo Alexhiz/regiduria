@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UbicationsExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 use App\Models\Ubication;
 use Illuminate\Http\Request;
 use App\Http\Requests\Ubication\AddRequest;
@@ -58,5 +61,10 @@ class UbicationController extends Controller
         $ubication->delete();
 
         return redirect()->route('ubicaciones.index');
+    }
+
+    public function exportExcelUbication() 
+    {
+        return Excel::download(new UbicationsExport, 'ubicaciones.xlsx');
     }
 }

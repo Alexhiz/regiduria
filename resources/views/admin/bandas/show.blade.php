@@ -25,10 +25,6 @@
                 <td>Color:</td>
                 <td>{{$band->color}}</td>
               </tr>
-               <tr>
-                <td>Color:</td>
-                <td>{{$band->num_serie}}</td>
-              </tr>
               <tr>
                 <td>Marca:</td>
                 <td>{{$band->marca}}</td>

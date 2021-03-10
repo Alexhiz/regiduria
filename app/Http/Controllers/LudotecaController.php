@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Exports\LudotecasExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Ludoteca;
 use App\Models\Condition;
 use App\Models\Ubication;
@@ -70,5 +71,10 @@ class LudotecaController extends Controller
         $ludoteca->delete();
 
         return redirect()->route('ludotecas.index');
+    }
+
+    public function exportExcelLudoteca() 
+    {
+        return Excel::download(new LudotecasExport, 'ludotecas.xlsx');
     }
 }

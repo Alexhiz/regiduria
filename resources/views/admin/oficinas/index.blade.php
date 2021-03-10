@@ -4,6 +4,7 @@
         <div class="card-header text-center ">
             <h3>Oficinas</h3>
             <a href="{{route('oficinas.create')}}" class="btn btn-primary">Agregar Datos en Oficinas</a>
+            <a href="{{route('export.oficinas')}}" class="btn btn-success">Exportar a Excel</a>
         </div>
         <div class="card-body">
           <table class="table table-hover table-sttriped table-bordered" id="myTable">

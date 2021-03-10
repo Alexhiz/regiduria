@@ -15,4 +15,6 @@ class Condition extends Model
     public function ludotecas(){
       return $this->hasMany(Ludoteca::class);
     }
+
+    
 }

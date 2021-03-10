@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UnitsExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 use App\Models\Unit;
 use Illuminate\Http\Request;
 use App\Http\Requests\Unit\AddRequest;
@@ -58,5 +61,10 @@ class UnitController extends Controller
         $unit->delete();
 
         return redirect()->route('unidades.index');
+    }
+
+    public function exportExcelUnit() 
+    {
+        return Excel::download(new UnitsExport, 'unidades.xlsx');
     }
 }

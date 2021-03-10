@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Exports\LockerroomsExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Lockerroom;
 use App\Models\Unit;
 use App\Models\Region;
@@ -76,5 +77,10 @@ class LockerroomController extends Controller
         $lockerroom->delete();
 
         return redirect()->route('vestuarios.index');
+    }
+
+    public function exportExcelLockerroom() 
+    {
+        return Excel::download(new LockerroomsExport, 'vestuarios.xlsx');
     }
 }

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Exports\ConditionsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 use App\Models\Condition;
 use Illuminate\Http\Request;
@@ -58,5 +60,10 @@ class ConditionController extends Controller
         $condition->delete();
 
         return redirect()->route('estados.index');
+    }
+
+    public function exportExcelCondition() 
+    {
+        return Excel::download(new ConditionsExport, 'estados.xlsx');
     }
 }

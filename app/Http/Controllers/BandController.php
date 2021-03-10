@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Exports\BandsExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Band;
 use App\Models\Condition;
 use App\Models\Ubication;
@@ -70,5 +71,10 @@ class BandController extends Controller
         $band->delete();
 
         return redirect()->route('bandas.index');
+    }
+
+    public function exportExcelBand() 
+    {
+        return Excel::download(new BandsExport, 'bandas.xlsx');
     }
 }

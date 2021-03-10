@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Exports\RegionsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 use App\Models\Region;
 use Illuminate\Http\Request;
@@ -58,5 +60,10 @@ class RegionController extends Controller
         $region->delete();
 
         return redirect()->route('regiones.index');
+    }
+
+    public function exportExcelRegion() 
+    {
+        return Excel::download(new RegionsExport, 'regiones.xlsx');
     }
 }

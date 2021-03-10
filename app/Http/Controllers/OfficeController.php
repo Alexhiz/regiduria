@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Exports\OfficesExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Office;
 use App\Models\Condition;
 use App\Models\Ubication;
@@ -70,5 +71,10 @@ class OfficeController extends Controller
         $office->delete();
 
         return redirect()->route('oficinas.index');
+    }
+
+    public function exportExcelOffice() 
+    {
+        return Excel::download(new OfficesExport, 'oficinas.xlsx');
     }
 }

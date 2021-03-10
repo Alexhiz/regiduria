@@ -4,7 +4,8 @@
         <div class="card-header text-center ">
             <h3>Estado o condición</h3>
             <a href="{{route('estados.create')}}" class="btn btn-primary">Agregar Estado</a>
-        </div>
+            <a href="{{route('export.estados')}}" class="btn btn-success">Exportar a Excel</a>
+          </div>
         <div class="card-body">
           <table class="table table-hover table-sttriped table-bordered" id="myTable">
             <thead>

@@ -4,6 +4,7 @@
         <div class="card-header text-center ">
             <h3>Unidades</h3>
             <a href="{{route('unidades.create')}}" class="btn btn-primary">Agregar Unidad</a>
+            <a href="{{route('export.unidades')}}" class="btn btn-success">Exportar a Excel</a>  
         </div>
         <div class="card-body">
           <table class="table table-hover table-sttriped table-bordered" id="myTable">

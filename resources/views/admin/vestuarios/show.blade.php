@@ -21,10 +21,6 @@
                 <td>Cantidad:</td>
                 <td>{{$lockerroom->cantidad}}</td>
               </tr>
-              <tr>
-                <td>Color:</td>
-                <td>{{$lockerroom->color}}</td>
-              </tr>
                <tr>
                 <td>Material:</td>
                 <td>{{$lockerroom->material}}</td>

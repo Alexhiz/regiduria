@@ -4,6 +4,7 @@
         <div class="card-header text-center ">
             <h3>Bandas</h3>
             <a href="{{route('bandas.create')}}" class="btn btn-primary">Agregar Datos en bandas</a>
+            <a href="{{route('export.bandas')}}" class="btn btn-success">Exportar a Excel</a>
         </div>
         <div class="card-body">
           <table class="table table-hover table-sttriped table-bordered" id="myTable">

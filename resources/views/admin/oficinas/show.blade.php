@@ -29,10 +29,6 @@
                 <td>Color:</td>
                 <td>{{$office->color}}</td>
               </tr>
-               <tr>
-                <td>Numero de serie:</td>
-                <td>{{$office->num_serie}}</td>
-              </tr>
               <tr>
                 <td>Modelo:</td>
                 <td>{{$office->modelo}}</td>
