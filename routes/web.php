@@ -11,11 +11,13 @@ use App\Http\Controllers\MarimbaController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\BandController;
 use App\Http\Controllers\LockerroomController;
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\LoginController as LoginAdmin;
 
-Auth::routes();
+
+Route::get('', [LoginController::class,'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class,'login'])->name('loginPost');
+Route::post('logout', [LoginController::class,'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
   Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -47,4 +49,11 @@ Route::middleware(['auth'])->group(function () {
   Route::resource('admin/vestuarios',LockerroomController::class);
   Route::get('admin/vestuarios-export',[LockerroomController::class,'exportExcelLockerroom'])->name('export.vestuarios');
 
+  Route::get('admin/registrar-form',[LoginAdmin::class,'registrar'])->name('admin.registrar-form');
+  Route::post('admin/registrar',[LoginAdmin::class,'register'])->name('admin.register');
+  Route::get('admin/editar-perfil/{id}',[LoginAdmin::class,'editarperfil'])->name('admin.editarperfil');
+  Route::put('admin/update-perfil/{id}',[LoginAdmin::class,'updateperfil'])->name('admin.updateperfil');
+  Route::get('admin/users',[LoginAdmin::class,'users'])->name('admin.users');
+  
+  
 });

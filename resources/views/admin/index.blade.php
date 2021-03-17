@@ -1,14 +1,14 @@
 @extends('layouts.control')
 
 @section('admin')
-     <div class="card">
-        <div class="card-header">
-            PORTAL DE REGIDURIA
-        </div>
-        
-    </div>
+<div class="card">
+  <div class="card-header text-center">
+    <img src="{{asset('img/fondo.jpg')}}" class="img-responsive">
+  </div>
 
-    @section('js')
-    
-    @endsection
+</div>
+
+@section('js')
+
+@endsection
 @endsection
