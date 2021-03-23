@@ -67,14 +67,24 @@ class LudotecaController extends Controller
 
     public function destroy($id)
     {
-        $ludoteca = Ludoteca::find($id);
-        $ludoteca->delete();
-
-        return redirect()->route('ludotecas.index');
+        
     }
 
     public function exportExcelLudoteca() 
     {
         return Excel::download(new LudotecasExport, 'ludotecas.xlsx');
     }
+
+    public function delete(Request $request, $id)
+    {
+			if($request->ajax()){
+			      Ludoteca::destroy($id);
+            $total = Ludoteca::all()->count();
+
+            return response()->json([
+                'total' => $total,
+                'message' => ""
+            ]);
+        }
+  	}
 }

@@ -23,8 +23,9 @@ class CreateOfficesTable extends Migration
             $table->string("modelo")->nullable();
             $table->string("num_serie")->nullable();
             $table->text("observacion")->nullable();
-            $table->foreignId("condition_id")->constrained();
-            $table->foreignId("ubication_id")->constrained();
+            $table->foreignId('condition_id')->constrained();
+            $table->foreignId('ubication_id')->constrained();
+           
             $table->timestamps();
         });
     }

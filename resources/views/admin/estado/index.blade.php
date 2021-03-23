@@ -24,11 +24,10 @@
             <div class="row ">
 
               <a href="{{route('estados.edit',$c)}}" class="btn btn-sm btn-success mx-4">Editar</a>
-              <form action="{{ route('estados.destroy', $c) }}" method="POST">
+              <form action="{{ route('estados.delete',['id' => $c->id]) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <input type="submit" value="Eliminar" class="btn btn-sm btn-danger"
-                  onclick="return confirm('¿Desea eliminar..?')">
+                <a href="" class="btn btn-sm btn-danger btn-delete">Eliminar</a>
               </form>
             </div>
           </td>

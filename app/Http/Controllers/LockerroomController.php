@@ -73,14 +73,24 @@ class LockerroomController extends Controller
 
     public function destroy($id)
     {
-        $lockerroom = Lockerroom::find($id);
-        $lockerroom->delete();
-
-        return redirect()->route('vestuarios.index');
+       
     }
 
     public function exportExcelLockerroom() 
     {
         return Excel::download(new LockerroomsExport, 'vestuarios.xlsx');
     }
+
+    public function delete(Request $request, $id)
+    {
+			if($request->ajax()){
+			      Lockerroom::destroy($id);
+            $total = Lockerroom::all()->count();
+
+            return response()->json([
+                'total' => $total,
+                'message' => ""
+            ]);
+        }
+  	}
 }

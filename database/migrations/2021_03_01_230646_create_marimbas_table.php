@@ -16,15 +16,16 @@ class CreateMarimbasTable extends Migration
         Schema::create('marimbas', function (Blueprint $table) {
             $table->id();
             $table->string("nombre");
-            $table->integer("cantidad")->nullable();
-            $table->text("caracteristica");
+            $table->integer("cantidad");
+            $table->text("caracteristica")->nullable();
             $table->string("color")->nullable();
             $table->string("tamano")->nullable();
             $table->string("marca")->nullable();
             $table->string("num_serie")->nullable();
             $table->text("observacion")->nullable();
-            $table->foreignId("condition_id")->constrained();
-            $table->foreignId("ubication_id")->constrained();
+            $table->foreignId('condition_id')->constrained();
+            $table->foreignId('ubication_id')->constrained();
+           
             $table->timestamps();
         });
     }

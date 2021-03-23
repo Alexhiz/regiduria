@@ -137,6 +137,7 @@
         });
 
   </script>
+  <script src="js/delete.js"></script>
 
 </body>
 

@@ -67,14 +67,25 @@ class BandController extends Controller
 
     public function destroy($id)
     {
-        $band = Band::find($id);
-        $band->delete();
+      
 
-        return redirect()->route('bandas.index');
     }
 
     public function exportExcelBand() 
     {
         return Excel::download(new BandsExport, 'bandas.xlsx');
     }
+
+    public function delete(Request $request, $id)
+    {
+			if($request->ajax()){
+			      Band::destroy($id);
+            $total = Band::all()->count();
+
+            return response()->json([
+                'total' => $total,
+                'message' => ""
+            ]);
+        }
+  	}
 }

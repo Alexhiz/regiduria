@@ -22,8 +22,9 @@ class CreateLudotecasTable extends Migration
             $table->string("tamano")->nullable();
             $table->string("marca")->nullable();
             $table->text("observacion")->nullable();
-            $table->foreignId("condition_id")->constrained();
-            $table->foreignId("ubication_id")->constrained();
+            $table->foreignId('condition_id')->constrained();
+            $table->foreignId('ubication_id')->constrained();
+           
             $table->timestamps();
         });
     }

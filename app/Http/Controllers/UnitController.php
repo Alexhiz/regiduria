@@ -57,14 +57,24 @@ class UnitController extends Controller
 
     public function destroy($id)
     {
-        $unit = Unit::find($id);
-        $unit->delete();
-
-        return redirect()->route('unidades.index');
+      
     }
 
     public function exportExcelUnit() 
     {
         return Excel::download(new UnitsExport, 'unidades.xlsx');
     }
+
+    public function delete(Request $request, $id)
+    {
+			if($request->ajax()){
+			      Unit::destroy($id);
+            $total = Unit::all()->count();
+
+            return response()->json([
+                'total' => $total,
+                'message' => ""
+            ]);
+        }
+  	}
 }

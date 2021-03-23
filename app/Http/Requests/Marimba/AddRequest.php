@@ -46,7 +46,7 @@ class AddRequest extends FormRequest
         'tamano.string'=>'El tamano debe ser de tipo texto',
         'marca.string'=>'El marca debe ser de tipo texto',
         'num_serie.string'=>'El número de serie debe ser de tipo texto',
-        'observacion.string'=>'La observacion debe ser de tipo texto',nullable|
+        'observacion.string'=>'La observacion debe ser de tipo texto',
         
         'condition_id.required'=>'El estado debe ser requerido',
         'ubication_id.required'=>'La ubicación debe ser requerido',

@@ -56,14 +56,25 @@ class ConditionController extends Controller
 
     public function destroy($id)
     {
-        $condition = Condition::find($id);
-        $condition->delete();
-
-        return redirect()->route('estados.index');
+      
     }
 
     public function exportExcelCondition() 
     {
         return Excel::download(new ConditionsExport, 'estados.xlsx');
     }
+
+    public function delete(Request $request, $id)
+    {
+			if($request->ajax()){
+			      Condition::destroy($id);
+            $total = Condition::all()->count();
+
+            return response()->json([
+                'total' => $total,
+                'message' => ""
+            ]);
+        }
+  	}
+
 }

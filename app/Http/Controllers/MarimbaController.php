@@ -67,14 +67,24 @@ class MarimbaController extends Controller
 
     public function destroy($id)
     {
-        $marimba = Marimba::find($id);
-        $marimba->delete();
-
-        return redirect()->route('marimbas.index');
+        
     }
 
     public function exportExcelMarimba() 
     {
         return Excel::download(new MarimbasExport, 'marimbas.xlsx');
     }
+
+    public function delete(Request $request, $id)
+    {
+			if($request->ajax()){
+			      Marimba::destroy($id);
+            $total = Marimba::all()->count();
+
+            return response()->json([
+                'total' => $total,
+                'message' => ""
+            ]);
+        }
+  	}
 }

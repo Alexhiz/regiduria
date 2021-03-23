@@ -67,14 +67,24 @@ class OfficeController extends Controller
 
     public function destroy($id)
     {
-        $office = Office::find($id);
-        $office->delete();
-
-        return redirect()->route('oficinas.index');
+       
     }
 
     public function exportExcelOffice() 
     {
         return Excel::download(new OfficesExport, 'oficinas.xlsx');
     }
+
+    public function delete(Request $request, $id)
+    {
+			if($request->ajax()){
+			      Office::destroy($id);
+            $total = Office::all()->count();
+
+            return response()->json([
+                'total' => $total,
+                'message' => ""
+            ]);
+        }
+  	}
 }

@@ -56,14 +56,24 @@ class RegionController extends Controller
 
     public function destroy($id)
     {
-        $region = Region::find($id);
-        $region->delete();
-
-        return redirect()->route('regiones.index');
+        
     }
 
     public function exportExcelRegion() 
     {
         return Excel::download(new RegionsExport, 'regiones.xlsx');
     }
+
+    public function delete(Request $request, $id)
+    {
+			if($request->ajax()){
+			      Region::destroy($id);
+            $total = Region::all()->count();
+
+            return response()->json([
+                'total' => $total,
+                'message' => ""
+            ]);
+        }
+  	}
 }

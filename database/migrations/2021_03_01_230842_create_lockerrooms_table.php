@@ -21,10 +21,11 @@ class CreateLockerroomsTable extends Migration
             $table->string("color")->nullable();
             $table->string("talla")->nullable();
             $table->text("observacion")->nullable();
-            $table->foreignId("condition_id")->constrained();
-            $table->foreignId("unit_id")->constrained();
-            $table->foreignId("region_id")->constrained();
-            $table->foreignId("ubication_id")->constrained();
+            $table->foreignId('condition_id');
+            $table->foreignId('ubication_id');
+            $table->foreignId('region_id')->constrained();
+            $table->foreignId('unit_id')->constrained();
+           
             $table->timestamps();
         });
     }

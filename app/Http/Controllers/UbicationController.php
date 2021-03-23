@@ -57,14 +57,24 @@ class UbicationController extends Controller
 
     public function destroy($id)
     {
-        $ubication = Ubication::find($id);
-        $ubication->delete();
-
-        return redirect()->route('ubicaciones.index');
+        
     }
 
     public function exportExcelUbication() 
     {
         return Excel::download(new UbicationsExport, 'ubicaciones.xlsx');
     }
+
+    public function delete(Request $request, $id)
+    {
+			if($request->ajax()){
+			      Ubication::destroy($id);
+            $total = Ubication::all()->count();
+
+            return response()->json([
+                'total' => $total,
+                'message' => ""
+            ]);
+        }
+  	}
 }
